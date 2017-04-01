@@ -2,10 +2,10 @@ require_relative('../db/sql_runner')
 
 class Genre
 
-  attr_reader( :type, :album_id, :genre_id, :id )
+  attr_reader( :id, :type )
 
   def initialize(options)
-    @id = nil || options['id'].to_i
+    @id = options['id'].to_i
     @type = options['type']
   end
 
@@ -16,20 +16,26 @@ class Genre
       '#{ @type }'
     ) RETURNING *"
     results = SqlRunner.run(sql)
-    @id = results.first()['id'].to_i
+    @id = results.first()["id"].to_i
+  end
+
+  def find( id )
+    sql = "INSERT * FROM genres WHERE id=#{id}"
+    genre = SqlRunner.run( sql ).first
+    return genre
   end
 
   def self.all()
     sql = "SELECT * FROM genres"
-    results = SqlRunner.run( sql )
-    return results.map { |hash| Genre.new( hash ) }
+    genres = map_genres(sql)
+    return genres
   end
 
-  def self.find( id )
-    sql = "SELECT * FROM genres WHERE id=#{id}"
-    results = SqlRunner.run( sql )
-    return Genre.new( results.first )
+  def self.map_genres(sql)
+    genres = SqlRunner.run( sql )
+    return genres.map { |genre| Genre.new( genre ) }
   end
+
 
   def self.delete_all
     sql = "DELETE FROM genres"

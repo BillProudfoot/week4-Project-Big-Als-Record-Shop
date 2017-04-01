@@ -2,34 +2,39 @@ require_relative('../db/sql_runner')
 
 class Artist
 
-  attr_reader( :album_id, :genre_id, :id )
+  attr_reader( :id, :name )
 
   def initialize(options)
-    @id = nil || options['id'].to_i
+    @id = options['id'].to_i
     @name = options['name']
   end
 
   def save()
-    sql = "INSERT INTO artists (
-      name
-    ) VALUES (
-      '#{ @name }'
-    ) RETURNING *"
-    results = SqlRunner.run(sql)
-    @id = results.first()['id'].to_i
+    sql = "INSERT INTO artists (name) VALUES ('#{ @name }') RETURNING *"
+    result = SqlRunner.run(sql)
+    id = result.first["id"]
+    @id = id.to_i
+  end
+
+  def find( id )
+    sql = "SELECT * FROM artists WHERE id=#{id}"
+    artist = SqlRunner.run( sql ).first
+    return artist
   end
 
   def self.all()
     sql = "SELECT * FROM artists"
-    results = SqlRunner.run( sql )
-    return results.map { |hash| Artist.new( hash ) }
+    artists = map_artists(sql)
+    return artists
   end
 
-  def self.find( id )
-    sql = "SELECT * FROM artists WHERE id=#{id}"
-    results = SqlRunner.run( sql )
-    return Artist.new( results.first )
+
+  def self.map_artists(sql)
+    artists = SqlRunner.run( sql )
+    return artists.map { |artist| Artist.new( artist ) }
   end
+
+ 
 
   def self.delete_all
     sql = "DELETE FROM artists"

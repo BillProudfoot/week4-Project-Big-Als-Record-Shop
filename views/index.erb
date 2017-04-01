@@ -1,3 +1,15 @@
-<h1>Big Al's Record Store Stock Systems!</h1>
+<h2>Albums</h2>
 
-<p>Keeeeeep  On Rockinnnng...</p>
+<div id="album-wrapper">
+  <% @albums.each do |album| %>
+
+  <div class="album">
+    <h3><%= album.title %></h3>
+    <p>Artist: <%= album.artist.name %></p>
+    <p>Genre: <%= album.genre.type %> </p>
+    <p>Quantity in Stock: <%= album.quantity %> </p>
+    <p>Cost Price: <%= album.buy_price %> </p>
+  </div>
+
+<% end %>
+</div>
