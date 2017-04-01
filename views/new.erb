@@ -15,7 +15,7 @@
   <label for="genre-select">Select a Genre id:</label>
   <select id="genre-select" name ="genre_id">
   <% @genres.each do |genre| %>
-    <option value= "genre.id">   <%= genre.name %> </option>
+    <option value= "genre.id">   <%= genre.type %> </option>
   <% end %>
   </select>
   <br/>
