@@ -23,16 +23,25 @@ class Album
     @id = results.first()['id'].to_i
   end
 
+  def album_genre()
+      sql = "SELECT * FROM genres WHERE id = #{@genre_id};"
+      genres = SqlRunner.run(sql)
+      genre_list = genres
+      genre = Genre.new(genre_list)
+    return genre
+    end
+
+
   def self.all()
     sql = "SELECT * FROM albums"
     results = SqlRunner.run( sql )
-    return results.map { |hash| Albums.new( hash )}
+    return results.map { |hash| Album.new( hash )}
   end
 
   def self.find(id)
     sql = " SELECT * FROM albums WHERE id=#{id}"
     results = SqlRunner.run(sql)
-    return Albums.new( results.first)
+    return Album.new( results.first)
   end
 
   def self.delete_all
