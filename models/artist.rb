@@ -11,9 +11,8 @@ class Artist
 
   def save()
     sql = "INSERT INTO artists (name) VALUES ('#{ @name }') RETURNING *"
-    result = SqlRunner.run(sql)
-    id = result.first["id"]
-    @id = id.to_i
+    results = SqlRunner.run(sql)
+    @id = results.first()['id'].to_i
   end
 
   def find( id )
@@ -31,7 +30,7 @@ class Artist
 
   def self.map_artists(sql)
     artists = SqlRunner.run( sql )
-    return artists.map { |artist| Artist.new( artist ) }
+    return artists.map { |artist| Artist.new(artist) }
   end
 
  

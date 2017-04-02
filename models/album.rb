@@ -2,22 +2,22 @@ require_relative( '../db/sql_runner' )
 
 class Album
 
-  attr_reader( :title, :artist_id, :genre_id, :quantity, :buy_price, :id )
+  attr_reader( :title, :artist_id, :quantity, :id )
 
   def initialize( options )
     @id = nil || options['id'].to_i
     @title = options['title']
     @artist_id = options['artist_id'].to_i
-    @genre_id = options['genre_id'].to_i
+    # @genre_id = options['genre_id'].to_i
     @quantity = options['quantity'].to_i
-    @buy_price = options['buy_price']
+    # @buy_price = options['buy_price']
   end
 
   def save()
     sql = "INSERT INTO albums (
-    title, artist_id, genre_id, quantity, buy_price
+    title, artist_id, quantity
     ) VALUES (
-      '#{ @title }', '#{ @artist_id }', #{ @genre_id }, #{ @quantity}, #{ @buy_price}
+      '#{ @title }', '#{ @artist_id }', #{ @quantity}
     ) RETURNING *"
     results = SqlRunner.run(sql)
     @id = results.first()['id'].to_i
@@ -30,19 +30,24 @@ class Album
     end
 
 
-  def genre
-      sql = "SELECT * FROM genres WHERE id = #{@genre_id};"
-      genres = SqlRunner.run(sql)
-      genre_list = genres
-      genre = Genre.new(genre_list)
-    return genre
-    end
+  # def genre
+  #     sql = "SELECT * FROM genres WHERE id = #{@genre_id};"
+  #     genres = SqlRunner.run(sql)
+  #     genre_list = genres
+  #     genre = Genre.new(genre_list)
+  #   return genre
+  #   end
 
 
-  def self.all()
+  def self.all
     sql = "SELECT * FROM albums"
-    results = SqlRunner.run( sql )
-    return results.map { |album| Album.new( album )}
+    albums = map_albums(sql)
+    return albums
+  end
+
+  def self.map_albums(sql)
+    albums = SqlRunner.run(sql)
+    return albums.map {|album| Album.new(album)}
   end
 
   def self.find(id)
