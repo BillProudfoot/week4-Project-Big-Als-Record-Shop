@@ -4,8 +4,8 @@
   <input id="title" type="text" name="title"/>
   <br/>
   <br/>
-  <label for="artist-select">Select an Artist id:</label>
-  <select id="artist-select" name ="artist_id">
+  <label for="artist_select">Select an Artist id:</label>
+  <select id="artist_id" name ="artist_select">
   <% @artists.each do |artist| %>
     <option value= "artist.id">   <%= artist.name %> </option>
   <% end %>

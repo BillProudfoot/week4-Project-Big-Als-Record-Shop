@@ -18,3 +18,21 @@ post '/albums' do
   Album.new(params).save
   redirect to '/albums'
 end
+
+get '/artists' do
+  @artists = Artist.all
+  erb(:"artists/index")
+end
+
+get '/artists/new' do
+  @albums = Album.all
+  erb(:"artists/new")
+end
+
+post '/artists' do
+  Artist.new(params).save
+  redirect to '/artists'
+end
+
+
+

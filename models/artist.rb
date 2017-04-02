@@ -2,10 +2,10 @@ require_relative('../db/sql_runner')
 
 class Artist
 
-  attr_reader( :id, :name )
+  attr_reader( :id, :name, :artist_id )
 
   def initialize(options)
-    @id = options['id'].to_i
+    @id = options['id'].to_i if options['id']
     @name = options['name']
   end
 
@@ -35,9 +35,9 @@ class Artist
 
  
 
-  def self.delete_all
-    sql = "DELETE FROM artists"
-    SqlRunner.run( sql )
-  end
+  # def self.delete_all
+  #   sql = "DELETE FROM artists"
+  #   SqlRunner.run( sql )
+  # end
 
 end

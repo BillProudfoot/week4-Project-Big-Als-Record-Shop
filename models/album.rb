@@ -5,7 +5,7 @@ class Album
   attr_reader( :title, :artist_id, :quantity, :id )
 
   def initialize( options )
-    @id = nil || options['id'].to_i
+    @id = options['id'].to_i if options['id']
     @title = options['title']
     @artist_id = options['artist_id'].to_i
     # @genre_id = options['genre_id'].to_i
@@ -38,6 +38,11 @@ class Album
   #   return genre
   #   end
 
+  # def save()
+  #   sql = "INSERT INTO albums (title) VALUES ('#{ @title }') RETURNING *"
+  #   results = SqlRunner.run(sql)
+  #   @id = results.first()['id'].to_i
+  # end
 
   def self.all
     sql = "SELECT * FROM albums"
@@ -50,15 +55,15 @@ class Album
     return albums.map {|album| Album.new(album)}
   end
 
-  def self.find(id)
-    sql = " SELECT * FROM albums WHERE id=#{id}"
-    results = SqlRunner.run(sql)
-    return Album.new( results.first)
-  end
+  # def self.find(id)
+  #   sql = " SELECT * FROM albums WHERE id=#{id}"
+  #   results = SqlRunner.run(sql)
+  #   return Album.new( results.first)
+  # end
 
-  def self.delete_all
-    sql = "DELETE FROM albums"
-    SqlRunner.run( sql )
-  end
+  # def self.delete_all
+  #   sql = "DELETE FROM albums"
+  #   SqlRunner.run( sql )
+  # end
 
  end 
