@@ -3,9 +3,10 @@ require_relative('../models/artist.rb')
 require_relative('../models/genre.rb')
 require('pry-byebug')
 
-# Genre.delete_all
-# Artist.delete_all
-# Album.delete_all
+Album.delete_all
+Genre.delete_all
+Artist.delete_all
+
 
 artist1 = Artist.new({
   'name' => "Elvis"

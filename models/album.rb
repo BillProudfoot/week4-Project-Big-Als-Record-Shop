@@ -1,4 +1,5 @@
 require_relative( '../db/sql_runner' )
+require_relative('./artist')
 require_relative('./genre')
 
 class Album
@@ -87,9 +88,9 @@ class Album
   #   return Album.new( results.first)
   # end
 
-  # def self.delete_all
-  #   sql = "DELETE FROM albums"
-  #   SqlRunner.run( sql )
-  # end
+  def self.delete_all
+    sql = "DELETE FROM albums"
+    SqlRunner.run( sql )
+  end
 
  end 

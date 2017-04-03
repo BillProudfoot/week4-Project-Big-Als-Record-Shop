@@ -1,11 +1,13 @@
 require_relative('../db/sql_runner')
+require_relative('./album')
+require_relative('./artist')
 
 class Genre
 
   attr_reader( :id, :type )
 
   def initialize(options)
-    @id = options['id'].to_i
+    @id = options['id'].to_i if options['id']
     @type = options['type']
   end
 
@@ -16,7 +18,8 @@ class Genre
       '#{ @type }'
     ) RETURNING *"
     results = SqlRunner.run(sql)
-    @id = results.first()["id"].to_i
+    id = results.first['id']
+    @id = id
   end
 
   def album
@@ -44,9 +47,9 @@ class Genre
   end
 
 
-  # def self.delete_all
-  #   sql = "DELETE FROM genres"
-  #   SqlRunner.run( sql )
-  # end
+  def self.delete_all
+    sql = "DELETE FROM genres"
+    SqlRunner.run( sql )
+  end
 
 end
