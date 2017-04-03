@@ -25,7 +25,8 @@ CREATE TABLE albums
    artist_id INT8 REFERENCES artists(id) ON DELETE CASCADE,
    -- genre_id INT8 REFERENCES genres(id),
    quantity INT8,
-   buy_price INT8
+   buy_price INT8,
+   sell_price INT8
  );
 
 
