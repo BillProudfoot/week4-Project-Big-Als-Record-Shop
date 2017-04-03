@@ -2,7 +2,7 @@ require_relative( '../db/sql_runner' )
 
 class Album
 
-  attr_reader( :title, :artist_id, :quantity, :id )
+  attr_reader( :title, :artist_id, :quantity, :id, :stock_level )
 
   def initialize( options )
     return if options == nil
@@ -25,6 +25,20 @@ class Album
     @id = id
   end
 
+  def stock_level
+    level = ""
+    if @quantity > 10
+      level = "High"
+    elsif @quantity > 3
+      level = "Medium"
+    elsif @quantity < 4
+      level = "Low"
+    else
+      level = "No Stock Found"
+    end
+  end
+
+  
   def artist
       sql = "SELECT * FROM artists WHERE id = #{@artist_id}"
       result = SqlRunner.run(sql)
