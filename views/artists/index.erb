@@ -1,0 +1,13 @@
+<h2>Artists</h2>
+
+<div id="artist-wrapper">
+  <% @artists.each do |artist| %>
+
+  <div class="artist">
+    <h3><%= artist.name %></h3>
+    <p>Album: <%= artist.album.title %></p>
+    <p>Quantity in Stock: <%= artist.album.quantity %> </p>
+  </div>
+
+<% end %>
+</div>

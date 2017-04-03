@@ -5,9 +5,9 @@
   <br/>
   <br/>
   <label for="artist_select">Select an Artist id:</label>
-  <select id="artist_id" name ="artist_select">
+  <select id="artist_id" name ="artist_id">
   <% @artists.each do |artist| %>
-    <option value= "artist.id">   <%= artist.name %> </option>
+    <option value= "<%= artist.id %>">   <%= artist.name %> </option>
   <% end %>
   </select>
   <br/>
@@ -16,7 +16,7 @@
   <br/>
   <br/>
   <label for="quantity">Quantity:</label>
-  <input id="quantity" type="number" name="Quantity"/>
+  <input id="quantity" type="number" name="quantity"/>
   <br/>
   <br/>
   

@@ -5,6 +5,7 @@ class Album
   attr_reader( :title, :artist_id, :quantity, :id )
 
   def initialize( options )
+    return if options == nil
     @id = options['id'].to_i if options['id']
     @title = options['title']
     @artist_id = options['artist_id'].to_i
@@ -19,8 +20,9 @@ class Album
     ) VALUES (
       '#{ @title }', '#{ @artist_id }', #{ @quantity}
     ) RETURNING *"
-    results = SqlRunner.run(sql)
-    @id = results.first()['id'].to_i
+    result = SqlRunner.run(sql)
+    id = result.first['id']
+    @id = id
   end
 
   def artist

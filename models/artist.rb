@@ -2,7 +2,7 @@ require_relative('../db/sql_runner')
 
 class Artist
 
-  attr_reader( :id, :name, :artist_id )
+  attr_reader( :id, :name)
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -11,9 +11,17 @@ class Artist
 
   def save()
     sql = "INSERT INTO artists (name) VALUES ('#{ @name }') RETURNING *"
-    results = SqlRunner.run(sql)
-    @id = results.first()['id'].to_i
+    result = SqlRunner.run(sql)
+    id = result.first['id']
+    @id = id
   end
+
+  def album
+      sql = "SELECT * FROM albums WHERE artist_id = #{@id}"
+      result = SqlRunner.run(sql)
+      return Album.new(result.first)
+    end
+
 
   def find( id )
     sql = "SELECT * FROM artists WHERE id=#{id}"
