@@ -8,6 +8,7 @@
     <p>Title: <%= album.artist.name %></p>
     <p>Buy Price: £ <%= album.buy_price %></p>
     <p>Sell Price: £ <%= album.sell_price %></p>
+    <p>Mark Up: <%= album.mark_up.round(2) %> % </p>
     <p>Quantity in Stock: <%= album.quantity %></p>
     <p>Stock Level: <%= album.stock_level %></p> 
   </div>
