@@ -7,11 +7,11 @@ body {
 
 a {
   text-decoration: none;
-  color: red;
+  color: black;
 }
 
 a:hover {
-  color: darkred;
+  color: blue;
 }
 
 #menu {
