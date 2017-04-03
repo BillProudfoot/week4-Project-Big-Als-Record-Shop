@@ -5,7 +5,8 @@
 
   <div class="album">
     <h3><%= album.title %></h3>
-    <p>Title: <%= album.artist.name %></p>
+    <p>By: <%= album.artist.name %></p>
+    <p>Genre: <%= album.genre.type %></p>
     <p>Buy Price: £ <%= album.buy_price %></p>
     <p>Sell Price: £ <%= album.sell_price %></p>
     <p>Mark Up: <%= album.mark_up.round(2) %> % </p>

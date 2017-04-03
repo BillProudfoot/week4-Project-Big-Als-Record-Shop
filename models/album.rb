@@ -1,15 +1,16 @@
 require_relative( '../db/sql_runner' )
+require_relative('./genre')
 
 class Album
 
-  attr_reader( :title, :artist_id, :quantity, :id, :stock_level, :buy_price, :sell_price, :mark_up )
+  attr_reader( :title, :artist_id, :quantity, :genre_id, :id, :stock_level, :buy_price, :sell_price, :mark_up )
 
   def initialize( options )
     return if options == nil
     @id = options['id'].to_i if options['id']
     @title = options['title']
     @artist_id = options['artist_id'].to_i
-    # @genre_id = options['genre_id'].to_i
+    @genre_id = options['genre_id'].to_i
     @quantity = options['quantity'].to_i
     @buy_price = options['buy_price'].to_f
     @sell_price = options['sell_price'].to_f
@@ -17,9 +18,9 @@ class Album
 
   def save()
     sql = "INSERT INTO albums (
-    title, artist_id, quantity, buy_price, sell_price
+    title, artist_id, genre_id, quantity, buy_price, sell_price
     ) VALUES (
-      '#{ @title }', '#{ @artist_id }', #{ @quantity}, #{ @buy_price}, #{ @sell_price}
+      '#{ @title }', '#{ @artist_id }', '#{ @genre_id }', #{ @quantity}, #{ @buy_price}, #{ @sell_price}
     ) RETURNING *"
     result = SqlRunner.run(sql)
     id = result.first['id']
@@ -41,14 +42,19 @@ class Album
 
   def mark_up
       mark_up = ((sell_price/buy_price) - 1) * 100
-    end
+  end
 
   def artist
       sql = "SELECT * FROM artists WHERE id = #{@artist_id}"
       result = SqlRunner.run(sql)
       return Artist.new(result.first)
-    end
+  end
 
+  def genre
+      sql = "SELECT * FROM genres WHERE id = #{@genre_id}"
+      result = SqlRunner.run(sql)
+      return Genre.new(result.first)
+  end
 
   # def genre
   #     sql = "SELECT * FROM genres WHERE id = #{@genre_id};"
