@@ -1,0 +1,21 @@
+<h2>Inventory</h2>
+
+<div id="album-wrapper">
+  <% @albums.each do |album| %>
+
+  <div class="album">
+    <h3><%= album.title %></h3>
+    <p>By: <%= album.artist.name %></p>
+    <p>Genre: <%= album.genre.type %></p>
+    <p>Buy Price: £ <%= album.buy_price %></p>
+    <p>Sell Price: £ <%= album.sell_price %></p>
+    <p>Mark Up: <%= album.mark_up.round(2) %> % </p>
+    <p>Quantity in Stock: <%= album.quantity %></p>
+    <p>Stock Level: <%= album.stock_level %></p>
+    
+  </div>
+
+  <!-- <div style="background-color: <?=getProperColor($result['album.stock_level'])?>;"><?=$result["title"]?></div> -->
+
+<% end %>
+</div>

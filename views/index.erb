@@ -1,18 +1,56 @@
-<h2>Inventory</h2>
+<!DOCTYPE html>
+<h1>Inventory</h2>
 
-<div id="album-wrapper">
-  <% @albums.each do |album| %>
+<html>
+<head>
+<style>
 
-  <div class="album">
-    <h3><%= album.title %></h3>
-    <p>By: <%= album.artist.name %></p>
-    <p>Genre: <%= album.genre.type %></p>
-    <p>Buy Price: £ <%= album.buy_price %></p>
-    <p>Sell Price: £ <%= album.sell_price %></p>
-    <p>Mark Up: <%= album.mark_up.round(2) %> % </p>
-    <p>Quantity in Stock: <%= album.quantity %></p>
-    <p>Stock Level: <%= album.stock_level %></p> 
-  </div>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
-<% end %>
+td, th {
+    border: 1px solid #dddddd;
+    text-align: centre;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+<div style="background-color:black;;color:#ccad00 ;padding:20px;">
+<table>
+  <tr>
+    <th><u>Title<u></th>
+    <th><u>Name<u></th>
+    <th><u>Genre<u></th>
+    <th><u>Buy Price £<u></th>
+    <th><u>Sell Price £<u></th>
+    <th><u>Mark up % <u></th>
+    <th><u>Quantity<u></th>
+    <th><u>Stock Level<u></th>
+  </tr>
+  </tr>
+   <% for album in @albums %>
+   <tr>
+     <td><%= album.title%></td>
+     <td><%= album.artist.name %></td>
+     <td><center><%= album.genre.type %></center></td>
+     
+     <td><center><%= album.buy_price%></center></td>
+     <td><center><%= album.sell_price%></center></td>
+     <td><center><%= album.mark_up.round(2)%></center></td>
+     
+     <td><center><%= album.quantity%></center></td>
+     <td><center><%= album.stock_level%></center></td>
+   </form></td>
+  <% end %>
+</table>
 </div>
+</body>
+</html>

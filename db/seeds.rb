@@ -9,20 +9,50 @@ Artist.delete_all
 
 
 artist1 = Artist.new({
-  'name' => "Elvis"
+  'name' => "Various"
   })
 
 artist2 = Artist.new({
-  'name' => "P!nk"
+  'name' => "Michael Buble"
   })
 
 artist3 = Artist.new({
-  'name' => "Adele"
+  'name' => "ABBA"
+  })
+
+artist4 = Artist.new({
+  'name' => "The Proclaimers"
+  })
+
+artist5 = Artist.new({
+  'name' => "Black Eyed Peas"
+  })
+
+artist6 = Artist.new({
+  'name' => "Runrig"
+  })
+
+artist7 = Artist.new({
+  'name' => "Pussycat Dolls"
+  })
+
+artist8 = Artist.new({
+  'name' => "Donna Summer"
+  })
+
+artist9 = Artist.new({
+  'name' => "Elvis"
   })
 
 artist1.save
 artist2.save
 artist3.save
+artist4.save
+artist5.save
+artist6.save
+artist7.save
+artist8.save
+artist9.save
 
 genre1 = Genre.new({
   'type' => "Easy Listening"
@@ -44,6 +74,11 @@ genre5 = Genre.new({
   'type' => "Anthems"
   })
 
+genre6 = Genre.new({
+  'type' => "Classical"
+  })
+
+
 genre1.save
 genre2.save
 genre3.save
@@ -51,12 +86,13 @@ genre4.save
 genre5.save
 
 album1 = Album.new({
-  'title' => "Wonder of you",
+  'title' => "Classical Chillout",
   'artist_id' => artist1.id,
-  'genre_id' => genre1.id,
+  'genre_id' => genre6.id,
   'quantity' => 8,
   'buy_price' => 10,
-  'sell_price' => 14
+  'sell_price' => 14,
+  'artwork' => '/images/album_covers/classical_chillout'
   })
 
 album2 = Album.new({
