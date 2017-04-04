@@ -41,21 +41,21 @@ class Album
     end
   end
 
-  def getProperColor($stock_level)
-  {
-      if ($stock_level > 0 && $stock_level <= 5)
-          return '#00FF00';
-      else if ($stock_level >= 6 && $stock_level <= 10)
-          return = '#FF8000';
-      else if ($stock_level >= 11)
-          return = '#FF0000';
-  }
-end
-
-  def album_artwork
-    url = ""
-    if @title =  
+  def getProperColor()
+    if (@quantity > 0 && @quantity < 4)
+      return 'Red';
+    elsif (@quantity >= 3 && @quantity <= 10)
+      return 'Orange';
+    elsif (@quantity >= 10)
+      return 'Green';
+    end
   end
+  
+
+  # def album_artwork
+  #   url = ""
+  #   if @title =  
+  # end
 
   def mark_up
       mark_up = ((sell_price/buy_price) - 1) * 100

@@ -47,7 +47,13 @@ tr:nth-child(even) {
      <td><center><%= album.mark_up.round(2)%></center></td>
      
      <td><center><%= album.quantity%></center></td>
-     <td><center><%= album.stock_level%></center></td>
+     <td>
+      <center>
+        <div style="color: <%= album.getProperColor %>">
+          <%= album.stock_level%>
+        </div>
+      </center>
+    </td>
    </form></td>
   <% end %>
 </table>
