@@ -4,7 +4,6 @@ require_relative('../album.rb')
 
 class AlbumTest < MiniTest::Test
 
-
   def setup()
     @sell_price = 10
     @buy_price = 5
@@ -14,8 +13,7 @@ class AlbumTest < MiniTest::Test
     mark_up = ((sell_price/buy_price) - 1) * 100
     assert_equal(mark_up, 100)
   end
-
-
+  
 end
 
 

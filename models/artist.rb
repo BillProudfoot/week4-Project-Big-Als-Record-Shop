@@ -24,12 +24,6 @@ class Artist
       return Album.new(result.first)
     end
 
-  # def album
-  #     sql = "SELECT * FROM albums WHERE artist_id = #{@id}"
-  #     artists = SqlRunner.run( sql )
-  #     return artists.map { |artist| Artist.new(artist) }
-  # end
-
   def find( id )
     sql = "SELECT * FROM artists WHERE id=#{id}"
     artist = SqlRunner.run( sql ).first
@@ -42,13 +36,10 @@ class Artist
     return artists
   end
 
-
   def self.map_artists(sql)
     artists = SqlRunner.run( sql )
     return artists.map { |artist| Artist.new(artist) }
   end
-
- 
 
   def self.delete_all
     sql = "DELETE FROM artists"

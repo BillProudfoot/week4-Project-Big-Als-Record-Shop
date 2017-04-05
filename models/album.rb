@@ -51,12 +51,6 @@ class Album
     end
   end
   
-
-  # def album_artwork
-  #   url = ""
-  #   if @title =  
-  # end
-
   def mark_up
       mark_up = ((sell_price/buy_price) - 1) * 100
   end
@@ -73,20 +67,6 @@ class Album
       return Genre.new(result.first)
   end
 
-  # def genre
-  #     sql = "SELECT * FROM genres WHERE id = #{@genre_id};"
-  #     genres = SqlRunner.run(sql)
-  #     genre_list = genres
-  #     genre = Genre.new(genre_list)
-  #   return genre
-  #   end
-
-  # def save()
-  #   sql = "INSERT INTO albums (title) VALUES ('#{ @title }') RETURNING *"
-  #   results = SqlRunner.run(sql)
-  #   @id = results.first()['id'].to_i
-  # end
-
   def self.all
     sql = "SELECT * FROM albums"
     albums = map_albums(sql)
@@ -98,7 +78,7 @@ class Album
     return albums.map {|album| Album.new(album)}
   end
 
-  # def self.find(id)
+  # def self.find(id)     Not required in project spec but was added for possible additions
   #   sql = " SELECT * FROM albums WHERE id=#{id}"
   #   results = SqlRunner.run(sql)
   #   return Album.new( results.first)

@@ -1,16 +1,12 @@
 DROP TABLE albums;
 DROP TABLE artists;
--- DROP TABLE genres;
+DROP TABLE genres;
 
-
--- CREATE TABLE genres
--- (
---   id SERIAL8 PRIMARY KEY,
---   type VARCHAR(255) NOT NULL
--- );
-
-
-
+CREATE TABLE genres
+(
+  id SERIAL8 PRIMARY KEY,
+  type VARCHAR(255) NOT NULL
+);
 
 CREATE TABLE artists
 (
@@ -33,5 +29,3 @@ CREATE TABLE albums
 
 
 
--- ALTER TABLE albums ADD artist_id INT8 references artists(id);
--- ALTER TABLE albums DROP COLUMN artist;

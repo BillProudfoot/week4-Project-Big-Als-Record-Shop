@@ -4,10 +4,6 @@ require_relative('../models/album.rb')
 require_relative('../models/artist.rb')
 require_relative('../models/genre.rb')
 
-# get '/' do
-#   @albums = Album.all
-#   erb(:index)
-# end
 
 get '/albums' do
   @albums = Album.all
@@ -25,7 +21,7 @@ end
 get '/albums/new' do
   @artists = Artist.all
   @genres = Genre.all
-  erb(:new)
+  erb(:"albums/new")
 end
 
 post '/albums' do

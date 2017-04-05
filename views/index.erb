@@ -3,41 +3,41 @@
 
 <html>
 <head>
-<style>
+  <style>
 
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: centre;
-    padding: 8px;
-}
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: centre;
+      padding: 8px;
+    }
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
 </head>
 <body>
-<div style="background-color:black;;color:#ccad00 ;padding:20px;">
-<table>
-  <tr>
-    <th><u>Title<u></th>
-    <th><u>Name<u></th>
-    <th><u>Genre<u></th>
-    <th><u>Buy Price £<u></th>
-    <th><u>Sell Price £<u></th>
-    <th><u>Mark up % <u></th>
-    <th><u>Quantity<u></th>
-    <th><u>Stock Level<u></th>
-  </tr>
-  </tr>
-   <% for album in @albums %>
-   <tr>
+  <div style="background-color:black;;color:#ccad00 ;padding:20px;">
+    <table>
+      <tr>
+        <th><u>Title<u></th>
+        <th><u>Name<u></th>
+        <th><u>Genre<u></th>
+        <th><u>Buy Price £<u></th>
+        <th><u>Sell Price £<u></th>
+        <th><u>Mark up % <u></th>
+        <th><u>Quantity<u></th>
+        <th><u>Stock Level<u></th>
+      </tr>
+    </tr>
+    <% for album in @albums %>
+    <tr>
      <td><%= album.title%></td>
      <td><%= album.artist.name %></td>
      <td><center><%= album.genre.type %></center></td>
@@ -54,7 +54,7 @@ tr:nth-child(even) {
         </div>
       </center>
     </td>
-   </form></td>
+  </form></td>
   <% end %>
 </table>
 </div>

@@ -92,7 +92,7 @@ album1 = Album.new({
   'quantity' => 8,
   'buy_price' => 10,
   'sell_price' => 14,
-  'artwork' => '/images/album_covers/classical_chillout'
+  # 'artwork' => '/images/album_covers/classical_chillout' decided not to add
   })
 
 album2 = Album.new({
