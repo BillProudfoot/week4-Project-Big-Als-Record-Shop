@@ -38,7 +38,7 @@ class Artist
 
   def self.map_artists(sql)
     artists = SqlRunner.run( sql )
-    return artists.map { |artist| Artist.new(artist) }
+    return artists.map { |artist| Artist.new(artist) }.sort_by {|artist| artist.name}
   end
 
   def self.delete_all

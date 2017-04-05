@@ -81,8 +81,7 @@ class Album
 
   def self.map_albums(sql)
     albums = SqlRunner.run(sql)
-    return albums.map {|album| Album.new(album)}
-    # .sort_by {|album| album.name}
+    return albums.map {|album| Album.new(album)}.sort_by {|album| album.title}
   end
 
   # def self.find(id)     Not required in project spec but was added for possible additions
