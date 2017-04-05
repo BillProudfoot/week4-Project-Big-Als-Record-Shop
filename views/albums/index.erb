@@ -4,6 +4,7 @@
   <% @albums.each do |album| %>
 
   <div class="album">
+  <img class="album_cover" src="/images/album_covers/<%= album.artwork %>" />
     <h3><%= album.title %></h3>
     <p>By: <%= album.artist.name %></p>
     <p>Genre: <%= album.genre.type %></p>
@@ -12,6 +13,7 @@
     <p>Mark Up: <%= album.mark_up.round(2) %> % </p>
     <p>Quantity in Stock: <%= album.quantity %></p>
     <p>Stock Level: <label style="color: <%= album.getProperColor %>"><%= album.stock_level %></label></p>
+    <p></p>
   </div>
   
 <% end %>

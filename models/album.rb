@@ -2,9 +2,10 @@ require_relative( '../db/sql_runner' )
 require_relative('./artist')
 require_relative('./genre')
 
+
 class Album
 
-  attr_reader( :title, :artist_id, :quantity, :genre_id, :id, :stock_level, :buy_price, :sell_price, :mark_up )
+  attr_reader( :title, :artist_id, :quantity, :genre_id, :id, :stock_level, :buy_price, :sell_price, :mark_up, :artwork )
 
   def initialize( options )
     return if options == nil
@@ -15,13 +16,18 @@ class Album
     @quantity = options['quantity'].to_i
     @buy_price = options['buy_price'].to_f
     @sell_price = options['sell_price'].to_f
+    #@artwork = "/images/album_covers/" + options['artwork'] +".jpg"
+    @artwork = options['artwork']
   end
+
+    # @artwork = options['artwork']
+
 
   def save()
     sql = "INSERT INTO albums (
-    title, artist_id, genre_id, quantity, buy_price, sell_price
+    title, artist_id, genre_id, quantity, buy_price, sell_price, artwork
     ) VALUES (
-      '#{ @title }', '#{ @artist_id }', '#{ @genre_id }', #{ @quantity}, #{ @buy_price}, #{ @sell_price}
+      '#{ @title }', '#{ @artist_id }', '#{ @genre_id }', #{ @quantity}, #{ @buy_price}, #{ @sell_price}, '#{ @artwork}'
     ) RETURNING *"
     result = SqlRunner.run(sql)
     id = result.first['id']
@@ -76,6 +82,7 @@ class Album
   def self.map_albums(sql)
     albums = SqlRunner.run(sql)
     return albums.map {|album| Album.new(album)}
+    # .sort_by {|album| album.name}
   end
 
   # def self.find(id)     Not required in project spec but was added for possible additions

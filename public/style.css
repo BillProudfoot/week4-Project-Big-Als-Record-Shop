@@ -41,13 +41,13 @@ ul {
 }
 
 #album-wrapper {
-  margin-left: 300px;
+  margin-left: 30px;
 }
 .album {
   border: 5px double;
   margin: 0 35px 30px 0;  
   padding: 25px;
-  width: 200px;
+  width: 225px;
   display: inline-block;
 }
 
@@ -84,4 +84,9 @@ ul {
 
 .stock-level {
 
+}
+
+.album_cover {
+  height: 100px;
+  width: 100px;
 }
