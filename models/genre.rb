@@ -39,7 +39,7 @@ class Genre
 
   def self.map_genres(sql)
     genres = SqlRunner.run( sql )
-    return genres.map { |genre| Genre.new(genre) }
+    return genres.map { |genre| Genre.new(genre) }.sort_by {|genre| genre.type}
   end
 
 
