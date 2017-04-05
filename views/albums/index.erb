@@ -11,11 +11,11 @@
     <p>Sell Price: £ <%= album.sell_price %></p>
     <p>Mark Up: <%= album.mark_up.round(2) %> % </p>
     <p>Quantity in Stock: <%= album.quantity %></p>
-    <p>Stock Level: <%= album.stock_level %></p>
-    
+    <p>Stock Level: <label style="color: <%= album.getProperColor %>"><%= album.stock_level %></label></p>
   </div>
-
-  
+    
+    
+    
  
 <% end %>
 </div>
