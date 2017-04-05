@@ -15,7 +15,7 @@ a:hover {
 }
 
 #menu {
-  width: 220px;
+  width: 1075px;
   display: flex;
   margin: 0 auto;
 }
@@ -55,6 +55,21 @@ a:hover {
   width: 160px;
   margin: 0 1em 0 0;
 }
+
+.button {
+    background-color: #ccad00;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    }
+
+.table {  }
 
 .stock-level {
 

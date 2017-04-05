@@ -5,15 +5,20 @@
   <link rel="stylesheet"  href="/style.css">
 </head>
 <body>
+  <h2>Navigation Menu</h2>
   <nav id="menu"> 
     <ul>
-      <li class="menu-item"><a href='/albums'>Albums</a></li>
-      <li class="menu-item"><a href='/artists'>Artists</a></li>
-      <li class="menu-item"><a href='/genres'>Genres</a></li>
-      <li class="menu-item"><a href='/artists/new'> Add New Artist</a></li>
-      <li class="menu-item"><a href='/albums/new'> Add New Album</a></li>
-      <li class="menu-item"><a href='/genres/new'> Add New Genre</a></li>
+      <li class="button"><a href='/albums/index'>Albums</a></li>
+      <li class="button"><a href='/albums'>Inventory</a></li>
+      <li class="button"><a href='/artists'>Artists</a></li>
+      <li class="button"><a href='/genres'>Genres</a></li>
+      <li class="button"><a href='/artists/new'> Add New Artist</a></li>
+      <li class="button"><a href='/albums/new'> Add New Album</a></li>
+      <li class="button"><a href='/genres/new'> Add New Genre</a></li>
     </ul>
+
+
+
   </nav>
   <%= yield %>
 </body>
